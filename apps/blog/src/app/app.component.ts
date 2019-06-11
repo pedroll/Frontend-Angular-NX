@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'blog';
+  title = 'Blog';
+  //public token ="fdsdgrf";
+  token: any = "";
   afuConfig = {
     multiple: false,
     formatsAllowed: ".jpg,.png",
@@ -15,7 +17,7 @@ export class AppComponent {
       url: "https://example-file-upload-api",
       headers: {
         "Content-Type": "text/plain;charset=UTF-8",
-        // "Authorization" : `Bearer ${token}`
+        "Authorization": `Bearer ${this.token}`
       }
     },
     theme: "dragNDrop",
@@ -31,5 +33,5 @@ export class AppComponent {
       afterUploadMsg_success: 'Successfully Uploaded !',
       afterUploadMsg_error: 'Upload Failed !'
     }
-  }
+  };
 }

@@ -31,12 +31,11 @@
               "apps/blog/src/styles.scss",
               "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
               "./node_modules/froala-editor/css/froala_style.min.css",
-              "apps/blog/src/assets/animatecss/animate.css",
-              "apps/blog/src/assets/fontawesome/scss/fontawesome.scss"
-
+              "apps/blog/src/assets/animatecss/animate.css"
             ],
             "scripts": [
-              "./node_modules/froala-editor/js/froala_editor.pkgd.min.js"
+              "./node_modules/froala-editor/js/froala_editor.pkgd.min.js",
+              "apps/blog/src/assets/fontawesome/js/all.js"
             ]
           },
           "configurations": {

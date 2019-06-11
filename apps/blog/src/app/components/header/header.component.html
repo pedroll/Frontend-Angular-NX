@@ -1,0 +1,64 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark my-3">
+    <a class="navbar-brand" href="#">
+      <i class="fab fa-angular fa-lg mr-2"></i>Blog</a>
+
+
+    <!--    <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"-->
+    <!--            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Toggle collapse-->
+    <!--    </button>-->
+    <!--    <hr>-->
+    <!--    <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">-->
+    <!--      <div class="well well-lg card card-block card-header">Some content</div>-->
+    <!--    </div>-->
+
+    <button class="navbar-toggler d-lg-none collapsed" type="button"
+            (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse"
+         id="collapsibleNavId"
+         [collapse]="isCollapsed"
+         [ngStyle]="{display: isCollapsed ? 'block' : 'none'}"
+         [isAnimated]="true">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Categorias</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0 ">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">Nombre usuario</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownId">
+            <a class="dropdown-item" href="#">Crear entrada</a>
+            <a class="dropdown-item" href="#">crear categoria</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Mi perfil</a>
+            <a class="dropdown-item" href="#">Ajustes</a>
+            <a class="dropdown-item" href="#">Salir</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav mt-2 mt-lg-0 ">
+        <li class="nav-item ">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#">Registro</a>
+        </li>
+      </ul>
+      <!--<form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>-->
+    </div>
+  </nav>
+</div>
