@@ -14,9 +14,12 @@ import {CollapseModule} from 'ngx-bootstrap/collapse';
 
 //components
 import {HeaderComponent} from './components/header/header.component';
+import {InicioComponent} from './pages/inicio/inicio.component';
+import {RegistroComponent} from './pages/registro/registro.component';
+import {LoginComponent} from './pages/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, InicioComponent, RegistroComponent, LoginComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
