@@ -7,9 +7,9 @@ import {Component, OnInit} from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(
-    public pageTitle = 'Identificate'
-  ) {
+  pageTitle = 'Registro';
+
+  constructor() {
   }
 
   ngOnInit() {
