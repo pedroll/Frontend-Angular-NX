@@ -1,6 +1,15 @@
 <h1>{{ pageTitle }}</h1>
-<p>Registrate en nuestra plataforma para vcrear nuevas entradas y mas</p>
-<form class="col-md-6 offset-md-3" [formGroup]="formularioRegistro" (ngSubmit)="onSubmit()">
+<p @saleTrigger *ngIf="status != 'success'">Registrate en nuestra plataforma para crear nuevas entradas y mas</p>
+
+<div class="alert alert-success col-md-6 offset-md-3" @entraTrigger *ngIf="status == 'success'">
+  El registro se ha completado satisfactoriamente. <a [routerLink]="['/login']">Logeate aqui.</a>
+</div>
+<div class="alert alert-danger col-md-6 offset-md-3" @entraSaleTrigger *ngIf="status == 'error'">
+  El registro no se ha podido completar.
+</div>
+
+<form class="col-md-6 offset-md-3" [formGroup]="formularioRegistro" (ngSubmit)="onSubmit()" @saleTrigger
+      *ngIf="status != 'success'">
   <div class="form-group">
     <label for="name">Nombre</label>
     <input type="text"
@@ -28,7 +37,7 @@
   </div>
 
   <div class="form-group">
-    <label for="name">Apellidos</label>
+    <label for="surname">Apellidos</label>
     <input type="text"
            name="surname"
            id="surname"
@@ -126,6 +135,3 @@
           [disabled]="!formularioRegistro.valid">Registrarme
   </button>
 </form>
-<p>
-  Form Status: {{ formularioRegistro.status }}
-</p>

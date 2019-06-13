@@ -8,7 +8,7 @@ export class User {
     public role: string = 'ROLE_USER',
     public description?: string,
     public image?: string
-
   ) {
   }
+
 }
