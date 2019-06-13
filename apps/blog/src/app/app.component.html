@@ -1,10 +1,10 @@
-<nx-blog-header></nx-blog-header>
-<div [froalaEditor]>Hello, Froala!</div>
-<angular-file-uploader
-  [config]="afuConfig">
-</angular-file-uploader>
-<button routerLink="/registro">registro</button>
-<button routerLink="/login">login</button>
-<button routerLink="/error">error</button>
-<button routerLink="">Inicio</button>
-<router-outlet></router-outlet>
+<div class="container">
+  <nx-blog-header></nx-blog-header>
+  <div class="col-12">
+    <div [froalaEditor]>Hello, Froala!</div>
+    <angular-file-uploader
+      [config]="afuConfig">
+    </angular-file-uploader>
+    <router-outlet></router-outlet>
+  </div>
+</div>
