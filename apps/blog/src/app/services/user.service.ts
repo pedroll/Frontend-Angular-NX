@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaderResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -19,6 +19,20 @@ export class UserService {
   register(user): Observable<any> {
 
     const url = `${this.url}register`;
+    const json = JSON.stringify(user);
+
+    const params = new HttpParams().set('json', json);
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+    return this.http.post(url, params, {headers});
+  }
+
+  login(user: any, getToken?): Observable<any> {
+    if (getToken) {
+      user.gettoken = 'true';
+    }
+
+    const url = `${this.url}login`;
     const json = JSON.stringify(user);
 
     const params = new HttpParams().set('json', json);
