@@ -11,9 +11,7 @@
     </button>
     <div class="collapse navbar-collapse"
          id="collapsibleNavId"
-         [collapse]="isCollapsed"
-         [ngStyle]="{display: isCollapsed ? 'block' : 'none'}"
-         [isAnimated]="true">
+         [ngStyle]="{display: isCollapsed ? 'block' : 'none'}">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/inicio']">Inicio <span class="sr-only">(current)</span></a>
@@ -23,9 +21,9 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto mt-2 mt-lg-0 ">
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="userService.identity">
           <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false">Nombre usuario</a>
+             aria-expanded="false">{{ userService.identity.name + ' ' + userService.identity.name }}</a>
           <div class="dropdown-menu" aria-labelledby="dropdownId">
             <a class="dropdown-item" href="#">Crear entrada</a>
             <a class="dropdown-item" href="#">crear categoria</a>
@@ -36,7 +34,7 @@
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav mt-2 mt-lg-0 ">
+      <ul class="navbar-nav mt-2 mt-lg-0 " *ngIf="!userService.identity">
         <li class="nav-item " routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/login']">Login</a>
         </li>

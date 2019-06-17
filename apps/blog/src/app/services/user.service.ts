@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,14 @@ import { environment } from '../../environments/environment';
 export class UserService {
 
   public url: string;
-
+  public identity: User;
+  public token: string;
   constructor(
     public http: HttpClient
   ) {
     this.url = environment['urlApiLravel'];
+    this.getIdentity();
+    this.getTokeny();
   }
 
   register(user): Observable<any> {
@@ -41,4 +45,19 @@ export class UserService {
     return this.http.post(url, params, {headers});
   }
 
+  getIdentity(): User {
+    const identity = JSON.parse(localStorage.getItem('identity'));
+
+    this.identity = (identity && typeof identity !== 'undefined') ? identity : undefined;
+
+    return this.identity;
+  }
+
+  getTokeny(): string {
+
+    const token = localStorage.getItem('identity');
+    this.token = (token && typeof token !== 'undefined') ? token : undefined;
+
+    return this.token;
+  }
 }

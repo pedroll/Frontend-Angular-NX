@@ -10,7 +10,6 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 // ngx bootstrap
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 // components
 import { HeaderComponent } from './components/header/header.component';
@@ -28,7 +27,6 @@ import { AppRoutingModule } from './app-routing.module';
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     AngularFileUploaderModule,
     BrowserAnimationsModule,
-    CollapseModule.forRoot(),
     AppRoutingModule,
     HttpClientModule
 

@@ -81,9 +81,8 @@ export class LoginComponent implements OnInit {
         response => {
           if (response.status === 'success') {
             this.status = 'success';
-            this.token = response.token;
-            this.user = response.user;
-            this.identity = response.user;
+            this.userService.token = response.token;
+            this.userService.identity = response.user;
 
             // persistir datos en local storage
             // console.log('user:', this.user);

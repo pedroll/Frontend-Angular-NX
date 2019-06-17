@@ -41,7 +41,8 @@
     "angular-froala-wysiwyg": "^3.0.0-rc.2-1",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
-    "ngx-bootstrap": "^4.3.0",
+    "jquery": "^3.4.1",
+    "popper": "^1.0.1",
     "rxjs": "~6.4.0",
     "zone.js": "^0.9.1"
   },

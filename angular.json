@@ -34,6 +34,8 @@
               "apps/blog/src/assets/animatecss/animate.css"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "./node_modules/froala-editor/js/froala_editor.pkgd.min.js",
               "apps/blog/src/assets/fontawesome/js/all.js"
             ]
@@ -99,7 +101,10 @@
           "options": {
             "jestConfig": "apps/blog/jest.config.js",
             "tsConfig": "apps/blog/tsconfig.spec.json",
-            "setupFile": "apps/blog/src/test-setup.ts"
+            "setupFile": "apps/blog/src/test-setup.ts",
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ]
           }
         }
       }
