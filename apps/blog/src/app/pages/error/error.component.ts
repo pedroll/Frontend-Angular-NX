@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'nx-blog-error',
@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class ErrorComponent implements OnInit {
 
   pageTitle = 'Error pagina no encontrada';
-  items: string[] = [
+  items: Array<string> = [
     'The first choice!',
     'And another choice for you.',
     'but wait! A third!'
@@ -28,7 +28,7 @@ export class ErrorComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

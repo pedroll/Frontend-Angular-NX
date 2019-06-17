@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'error', loadChildren: () => import('./pages/error/error.module')
       .then(m => m.ErrorModule)
   },
+  {
+    path: 'logout/:sure', loadChildren: () => import('./pages/login/login.module')
+      .then(m => m.LoginModule)
+  },
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
   {path: '**', redirectTo: 'error'}
 

@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
@@ -35,10 +36,7 @@ import { UserService } from '../../services/user.service';
 export class LoginComponent implements OnInit {
 
   pageTitle = 'Login';
-  private user: User;
   status: string = undefined;
-  private identity: User;
-  private token: any;
 
 // tslint:disable-next-line:max-line-length
   patterEmail = '^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
@@ -58,7 +56,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
   }
 
@@ -78,27 +77,22 @@ export class LoginComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     this.userService.login(this.formularioLogin.value)
       .subscribe(
-        response => {
+        (response: any) => {
           if (response.status === 'success') {
-            this.status = 'success';
-            this.userService.token = response.token;
-            this.userService.identity = response.user;
-
-            // persistir datos en local storage
-            // console.log('user:', this.user);
-            // console.log('token:', this.token);
+            status = 'success';
+            this.userService.setIdentity(response.token, response.user);
             console.log(response.message);
-            localStorage.setItem('tokem', this.token);
-            localStorage.setItem('identity', JSON.stringify(this.identity));
+            this.router.navigate(['inicio']);
+
           } else {
-            this.status = 'error';
+            status = 'error';
             console.error(response.message);
             console.error('Respuesta:', response);
           }
 
         },
         error => {
-          this.status = 'error';
+          status = 'error';
           console.error('error:', error);
 
         }
