@@ -1,8 +1,10 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'nx-blog-registro',
@@ -37,15 +39,9 @@ export class RegistroComponent implements OnInit {
   pageTitle = 'Registro';
   user: User;
   status: string = undefined;
+
   // tslint:disable-next-line:max-line-length
   patterEmail = '^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
-  /*  formularioRegistro = new FormGroup({
-      name: new FormControl(''),
-      email: new FormControl(''),
-      password: new FormControl(''),
-      acepta: new FormControl('')
-    });*/
-
   formularioRegistro = this.fb.group({
     name: ['', [
       Validators.required,

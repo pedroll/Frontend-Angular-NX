@@ -37,8 +37,10 @@ export class LoginComponent implements OnInit {
   pageTitle = 'Login';
   private user: User;
   status: string = undefined;
-  private token: string;
-  // tslint:disable-next-line:max-line-length
+  private identity: User;
+  private token: any;
+
+// tslint:disable-next-line:max-line-length
   patterEmail = '^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$';
   formularioLogin = this.fb.group({
     email: ['', [
@@ -81,7 +83,14 @@ export class LoginComponent implements OnInit {
             this.status = 'success';
             this.token = response.token;
             this.user = response.user;
+            this.identity = response.user;
+
+            // persistir datos en local storage
+            // console.log('user:', this.user);
+            // console.log('token:', this.token);
             console.log(response.message);
+            localStorage.setItem('tokem', this.token);
+            localStorage.setItem('identity', JSON.stringify(this.identity));
           } else {
             this.status = 'error';
             console.error(response.message);
