@@ -13,6 +13,7 @@ export class UserService {
   public url: string;
   public identity: User;
   public token: string;
+
   constructor(
     public http: HttpClient,
     private router: Router
@@ -57,7 +58,7 @@ export class UserService {
 
   getTokeny(): string {
 
-    const token = localStorage.getItem('identity');
+    const token = localStorage.getItem('token');
     this.token = (token && typeof token !== 'undefined') ? token : undefined;
 
     return this.token;
@@ -72,11 +73,27 @@ export class UserService {
 
   }
 
+  update(token: string, user: User): Observable<any> {
+    const url = `${this.url}user/update`;
+    const json = JSON.stringify(user);
+    const params = new HttpParams().set('json', json);
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token);
+    console.log(url);
+    console.log(json);
+    console.log(params);
+    console.log(headers);
+
+    return this.http.put(url, params, {headers: headers});
+
+  }
+
   checkLocalStorage(): void {
     const identity = JSON.parse(localStorage.getItem('identity'));
     this.identity = (identity && typeof identity !== 'undefined') ? identity : undefined;
 
-    const token = localStorage.getItem('identity');
+    const token = localStorage.getItem('token');
     this.token = (token && typeof token !== 'undefined') ? token : undefined;
   }
 

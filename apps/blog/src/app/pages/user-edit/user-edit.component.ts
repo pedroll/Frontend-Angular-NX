@@ -107,14 +107,24 @@ export class UserEditComponent implements OnInit {
 
   onSubmit(): void {
     // TODO: Use EventEmitter with form value
-    delete this.formularioEditar.value.acepta;
-    this.userService.register(this.formularioEditar.value)
+    this.user = new User(
+      this.formularioEditar.value.name,
+      this.formularioEditar.value.surname,
+      this.formularioEditar.value.email,
+      undefined,
+      this.formularioEditar.value.id,
+      this.formularioEditar.value.description,
+      this.formularioEditar.value.image
+    );
+
+    this.userService.update(this.userService.getTokeny(), this.user)
       .subscribe(
         response => {
           console.log('Respuesta:', response);
           if (response.status === 'success') {
             this.status = response.status;
-            this.formularioEditar.reset();
+            // this.formularioEditar.reset();
+            this.userService.setIdentity(this.userService.token, this.user);
           } else {
             this.status = 'error';
             console.error('Error:', response);
